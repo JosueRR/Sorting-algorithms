@@ -137,8 +137,7 @@ void Sort::radixsort(int* A, int n)
 
 /* PRIVATE FUNCTION DEFINITION */
 
-
-/* Merge sort */
+/* Merge sort aux */
 
 void Sort::merge_aux(int* A, int p, int q, int r)
 {
@@ -189,7 +188,7 @@ void Sort::merge_sort_aux(int* A, int const p, int const r)
 }
 #endif
 
-/* Heap sort*/
+/* Heap sort aux */
 
 void Sort::max_heapify_aux(int* A, int i, int n)
 {
@@ -226,7 +225,7 @@ void Sort::build_max_heap_aux(int* A, int n)
 	}
 }
 
-/* Quick sort*/
+/* Quick sort aux */
 
 void Sort::quick_sort_aux(int* A,int low,int high)
 {
