@@ -225,7 +225,7 @@ void Sort::build_max_heap_aux(int* A, int n)
 	}
 }
 
-/* Quick sort aux */
+/* Quick sort aux*/
 
 void Sort::quick_sort_aux(int* A,int low,int high)
 {
