@@ -1,13 +1,13 @@
 // Author: Josue Retana Rodriguez
 // Tests for several sort algorithms
 
+#include <Windows.h> // Change if unix
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
 #include <chrono>
-#include "Sort.h"
 #include <string.h>
-#include <Windows.h> // Change if unix
+#include "Sort.h"
 using namespace std;
 using namespace std::chrono;
 
