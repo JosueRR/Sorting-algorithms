@@ -1,10 +1,13 @@
+// Author: Josue Retana Rodriguez
+// Tests for several sort algorithms
+
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
 #include <chrono>
-#include "Ordenador.h"
+#include "Sort.h"
 #include <string.h>
-#include <Windows.h>
+#include <Windows.h> // Change if unix
 using namespace std;
 using namespace std::chrono;
 
@@ -30,175 +33,175 @@ void setArray(int arr[], int size)
 	}
 }
 
-void test(int arr[], int size)
+void test_sort(int arr[], int size)
 {
 	for (int i = 1; i < size; i++)
 	{
 		if (arr[i] < arr[i - 1])
-			cout << " Fallo, " << arr[i-1] << " ES menor que " << arr[i] << endl;
+			cout << "Test failed, " << arr[i-1] << " is less than " << arr[i] << endl;
+			break;
 	}
 }
 
 int main()
 {
-	int const size = 150000;
+	// Change for preferred size
+	int const size = 10000;
 	int A[size];
-	//int A[size] = { 0, 3, -8, 8, 1, -7 };
 
-	Ordenador llamado;
+	Sort call;
 
 	// Print array before and after sort
 	bool print_array_bool = 0;
 
-	// Test
-	bool prueba_seleccion = 1;
-	bool prueba_insercion = 1;
-	bool prueba_mergesort = 1;
-	bool prueba_heapsort = 1;
-	bool prueba_quicksort = 1;
-	bool prueba_radixsort = 1;
+	// Tests
+	bool test_selection = 1;
+	bool test_insertion = 1;
+	bool test_mergesort = 1;
+	bool test_heapsort = 1;
+	bool test_quicksort = 1;
+	bool test_radixsort = 1;
 
-
-	if (prueba_seleccion)
+	if (test_selection)
 	{
-		cout << "----------------PRUEBA SELECCION----------------" << endl;
+		cout << "----------------TEST SELECTION----------------" << endl;
 		if (print_array_bool)
 		{
-			cout << "Arreglo Original: ";
+			cout << "Original array: ";
 			printArray(A, size);
 		}
 		auto start = chrono::steady_clock::now();
-		llamado.seleccion(A, size);
+		call.selection(A, size);
 		auto end = chrono::steady_clock::now();
 		auto diff = end - start;
 		if (print_array_bool)
 		{
-			cout << "Resultado algoritmo seleccion: ";
+			cout << "Sorted array:";
 			printArray(A, size);
 		}
-		cout << "Arreglo tamanio: " << size << " , tomo tiempo: ";
+		cout << "Array size: " << size << " , took time: ";
 		cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << std::endl;
-		test(A, size);
+		test_sort(A, size);
 		cout << "----------------------------------------------" << endl << endl;
 	}
 
-	if (prueba_insercion)
+	if (test_insertion)
 	{
 		setArray(A, size);
-		cout << "----------------PRUEBA INSERCION----------------" << endl;
+		cout << "----------------TEST INSERTION----------------" << endl;
 		if (print_array_bool)
 		{
-			cout << "Arreglo Original: ";
+			cout << "Original array: ";
 			printArray(A, size);
 		}
 		auto start = chrono::steady_clock::now();
-		llamado.insercion(A, size);
+		call.insertion(A, size);
 		auto end = chrono::steady_clock::now();
 		auto diff = end - start;
 		if (print_array_bool)
 		{
-			cout << "Resultado algoritmo insercion: ";
+			cout << "Sorted array: ";
 			printArray(A, size);
 		}
-		cout << "Arreglo tamanio: " << size << " , tomo tiempo: ";
+		cout << "Array size: " << size << " , took time: ";
 		cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << std::endl;
-		test(A, size);
+		test_sort(A, size);
 		cout << "----------------------------------------------" << endl << endl;
 	}
 
-	if (prueba_mergesort)
+	if (test_mergesort)
 	{
 		setArray(A, size);
-		cout << "----------------PRUEBA MERGESORT----------------" << endl;
+		cout << "----------------TEST MERGESORT----------------" << endl;
 		if (print_array_bool)
 		{
-			cout << "Arreglo Original: ";
+			cout << "Original array: ";
 			printArray(A, size);
 		}
 		auto start = chrono::steady_clock::now();
-		llamado.mergesort(A, size);
+		call.mergesort(A, size);
 		auto end = chrono::steady_clock::now();
 		auto diff = end - start;
 		if (print_array_bool)
 		{
-			cout << "Resultado algoritmo mergesort: ";
+			cout << "Sorted array: ";
 			printArray(A, size);
 		}
-		cout << "Arreglo tamanio: " << size << " , tomo tiempo: ";
+		cout << "Array size: " << size << " , took time: ";
 		cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << std::endl;
-		test(A, size);
+		test_sort(A, size);
 		cout << "----------------------------------------------" << endl << endl;
 	}
 
-	if (prueba_heapsort)
+	if (test_heapsort)
 	{
 		setArray(A, size);
-		cout << "----------------PRUEBA HEAPSORT----------------" << endl;
+		cout << "----------------TEST HEAPSORT----------------" << endl;
 		if (print_array_bool)
 		{
-			cout << "Arreglo Original: ";
+			cout << "Original array: ";
 			printArray(A, size);
 		}
 		auto start = chrono::steady_clock::now();
-		llamado.heapsort(A, size);
+		call.heapsort(A, size);
 		auto end = chrono::steady_clock::now();
 		auto diff = end - start;
 		if (print_array_bool)
 		{
-			cout << "Resultado algoritmo mergesort: ";
+			cout << "Sorted array: ";
 			printArray(A, size);
 		}
-		cout << "Arreglo tamanio: " << size << " , tomo tiempo: ";
+		cout << "Array size: " << size << " , took time: ";
 		cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << std::endl;
-		test(A, size);
+		test_sort(A, size);
 		cout << "----------------------------------------------" << endl << endl;
 	}
 
-	if (prueba_quicksort)
+	if (test_quicksort)
 	{
 		setArray(A, size);
-		cout << "----------------PRUEBA QUICKSORT----------------" << endl;
+		cout << "----------------TEST QUICKSORT----------------" << endl;
 		if (print_array_bool)
 		{
-			cout << "Arreglo Original: ";
+			cout << "Original array: ";
 			printArray(A, size);
 		}
 		auto start = chrono::steady_clock::now();
-		llamado.quicksort(A, size);
+		call.quicksort(A, size);
 		auto end = chrono::steady_clock::now();
 		auto diff = end - start;
 		if (print_array_bool)
 		{
-			cout << "Resultado algoritmo mergesort: ";
+			cout << "Sorted array: ";
 			printArray(A, size);
 		}
-		cout << "Arreglo tamanio: " << size << " , tomo tiempo: ";
+		cout << "Array size: " << size << " , took time: ";
 		cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << std::endl;
-		test(A, size);
+		test_sort(A, size);
 		cout << "----------------------------------------------" << endl << endl;
 	}
 
-	if (prueba_radixsort)
+	if (test_radixsort)
 	{
 		setArray(A, size);
-		cout << "----------------PRUEBA RADIXSORT----------------" << endl;
+		cout << "----------------TEST RADIXSORT----------------" << endl;
 		if (print_array_bool)
 		{
-			cout << "Arreglo Original: ";
+			cout << "Original array: ";
 			printArray(A, size);
 		}
 		auto start = chrono::steady_clock::now();
-		llamado.radixsort(A, size);
+		call.radixsort(A, size);
 		auto end = chrono::steady_clock::now();
 		auto diff = end - start;
 		if (print_array_bool)
 		{
-			cout << "Resultado algoritmo radixsort: ";
+			cout << "Sorted array: ";
 			printArray(A, size);
 		}
-		cout << "Arreglo tamanio: " << size << " , tomo tiempo: ";
+		cout << "Array size: " << size << " , took time: ";
 		cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << std::endl;
-		test(A, size);
+		test_sort(A, size);
 		cout << "----------------------------------------------" << endl << endl;
 	}
 
